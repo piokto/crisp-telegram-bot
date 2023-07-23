@@ -271,7 +271,7 @@ func main() {
 
 		switch update.Message.Command() {
 		case "start":
-			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "极客Crisp客服助手")
+			msg := tgbotapi.NewMessage(update.Message.Chat.ID, "Crisp客服助手 By Piokto")
 			msg.ParseMode = "Markdown"
 			bot.Send(msg)
 		}
