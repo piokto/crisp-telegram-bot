@@ -1,12 +1,47 @@
 # Crisp Telegram Bot
 
 功能：将crisp消息转发到telegram，通过telegram回复crisp消息。
+程序运行需要安装golang和redis,假设环境系统为Ubuntu
 
-### 编译为linux程序
+## 安装golang
+```
+apt update
+apt install golang
+```
 
-`CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build`
+## 使用docker安装redis
+使用官方安装脚本自动安装
+安装命令如下：
+```
+ curl -fsSL https://test.docker.com -o test-docker.sh
+ sudo sh test-docker.sh
+ ```
+ ### 拉取镜像
 
-## config.yaml
+```
+docker pull redis:latest
+```
+### 运行容器
+```
+docker run -itd --name redis-test -p 6379:6379 redis
+
+```
+## 编译为linux程序
+
+
+### 先运行
+```
+go mod download github.com/crisp-im/go-crisp-api/crisp/v3
+go get github.com/crisp-im/go-crisp-api/crisp/v3@v3.0.0-20230206172200-c0f408fd09d4
+go get github.com/go-redis/redis
+go get github.com/go-telegram-bot-api/telegram-bot-api
+```
+### 再编译
+
+```
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build
+```
+## 在文件夹新建config.yaml，配置如下
 
 ```
 
